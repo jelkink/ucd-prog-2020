@@ -1,7 +1,6 @@
-import random
+from location import Location
 
 class Player:
 
   def __init__(self):
-    self.x = random.random()
-    self.y = random.random()
+    self.location = Location()
