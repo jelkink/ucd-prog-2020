@@ -74,12 +74,24 @@ class Party:
       self.location.set_y(sum_y / len(self.voters))
 
   def update_location_hunter(self):
-    pass
     #get previous move
     #if voters before prev move >= voters after prev move
     #  then turn 180 degrees and move again anywhere 90 degrees either side 
     #if voters before prev move < voters after prev move
     #  move same way as previous move again
+    
+    #read previous move
+    current_count = self.count_voters()
+    if current_count == self.previous_count:
+      pass
+    if current_count > self.previous_count:
+      self.location.x += 0.01
+      self.location.y += 0.01
+    if current_count < self.previous_count:
+      pass
+
+  def save_state(self):
+    self.previous_count = self.count_voters()
 
   def update_location_random(self):
     self.location.random_move()
