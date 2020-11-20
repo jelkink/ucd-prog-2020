@@ -1,4 +1,5 @@
 import random
+import math
 
 class Location():
 
