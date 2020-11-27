@@ -26,6 +26,6 @@ class Simulation:
   def run(self, number_of_steps):
     for i in range(number_of_steps):
       for voter in self.voters:
-        voter.vote()
+        voter.update_vote()
       for party in self.parties:
         party.update_location()

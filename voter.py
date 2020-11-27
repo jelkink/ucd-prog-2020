@@ -6,7 +6,7 @@ class Voter:
     self.location = Location()
     self.simulation = simulation
 
-  def vote(self):
+  def update_vote(self):
     parties = self.simulation.get_parties()
     smallest_distance = 2
     party_index = -1
