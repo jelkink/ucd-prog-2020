@@ -15,6 +15,7 @@ class Party:
     self.name = name
     self.colour = colour # random_colour() ???
     self.voters = []
+    self.previous_count = -1
 
 #  def random_strategy(self):
 #    self.strategy = random.choose(self.simulation.get_allowed_strategies())
@@ -80,18 +81,20 @@ class Party:
     #if voters before prev move < voters after prev move
     #  move same way as previous move again
     
-    #read previous move
-    current_count = self.count_voters()
-    if current_count == self.previous_count:
-      pass
-    if current_count > self.previous_count:
-      self.location.x += 0.01
-      self.location.y += 0.01
-    if current_count < self.previous_count:
-      pass
+    if self.previous_count == -1:
+      direction = random.random() * 360.0
+    elif self.previous_count < self.count_voters():
+      direction = self.previous_direction
+    else:
+      lower_limit = self.previous_direction + 90      
+      direction = (random.random() * 180.0 + lower_limit) % 360
 
-  def save_state(self):
+    self.location.move_angle(direction)
+    self.previous_direction = direction
     self.previous_count = self.count_voters()
+
+  # def save_state(self):
+  #   self.previous_count = self.count_voters()
 
   def update_location_random(self):
     self.location.random_move()
