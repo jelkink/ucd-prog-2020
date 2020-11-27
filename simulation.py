@@ -5,14 +5,17 @@ from voter import Voter
 #voters,parties,numbers of simulations
 class Simulation:
 
-  def __init__(self, n_of_simulations):
-    self.n_of_simulations = n_of_simulations
+  def __init__(self):
     self.voters = []
     self.parties = []
 
   def generate_parties(self, n):
     for i in range(n):
       self.parties.append(Party(self, "Party " + format(i, 'd') , "colour" + format(i, 'd')))
+    
+  def generate_voters(self, n):
+    for i in range(n):
+      self.voters.append(Voter(self))
 
   def get_parties(self):
     return self.parties
@@ -20,5 +23,9 @@ class Simulation:
   def get_voters(self):
     return self.voters
 
-  def run(self):
-    pass
+  def run(self, number_of_steps):
+    for i in range(number_of_steps):
+      for voter in self.voters:
+        voter.vote()
+      for party in self.parties:
+        party.update_location()

@@ -83,7 +83,7 @@ class Party:
     
     if self.previous_count == -1:
       direction = random.random() * 360.0
-    elif self.previous_count < self.count_voters():
+    elif self.previous_count <= self.count_voters():
       direction = self.previous_direction
     else:
       lower_limit = self.previous_direction + 90      
