@@ -20,8 +20,9 @@ class Location():
 
   def move_towards(self, other):
     delta = self.distance(other)
-    self.set_x(self.x + (other.x - self.x) / delta * self.step_size)
-    self.set_y(self.y + (other.y - self.y) / delta * self.step_size)
+    if delta > 0.0:
+      self.set_x(self.x + (other.x - self.x) / delta * self.step_size)
+      self.set_y(self.y + (other.y - self.y) / delta * self.step_size)
 
   def move_angle(self, degrees):
     radius = degrees * math.pi / 180
