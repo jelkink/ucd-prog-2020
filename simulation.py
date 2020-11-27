@@ -25,7 +25,9 @@ class Simulation:
 
   def run(self, number_of_steps):
     for i in range(number_of_steps):
+      print("\nStep {}:".format(i))
       for voter in self.voters:
         voter.update_vote()
       for party in self.parties:
+        print("Party {} with the {} strategy has {} votes.".format(party.name, party.strategy, party.count_voters()))
         party.update_location()

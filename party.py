@@ -71,8 +71,12 @@ class Party:
       for voter in self.voters:
         sum_x += voter.location.x
         sum_y += voter.location.y
-      self.location.set_x(sum_x / len(self.voters))
-      self.location.set_y(sum_y / len(self.voters))
+      
+      target_location = Location()
+      target_location.set_x(sum_x / len(self.voters))
+      target_location.set_y(sum_y / len(self.voters))
+
+      self.location.move_towards(target_location)
 
   def update_location_hunter(self):
     #get previous move
