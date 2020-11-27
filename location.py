@@ -1,6 +1,7 @@
 import random
 import math
 
+
 class Location():
 
   def __init__(self):
@@ -22,6 +23,13 @@ class Location():
     delta = self.distance(other)
     self.set_x(self.x + (other.x - self.x) / delta * self.step_size)
     self.set_y(self.y + (other.y - self.y) / delta * self.step_size)
+
+  def move_angle(self, degrees):
+    radius = degrees * math.pi / 180
+    dx = math.cos(radius)
+    dy = math.sin(radius)
+    self.set_x(self.x + dx * self.step_size)
+    self.set_y(self.y + dy * self.step_size)
 
   def get_x(self):
     return self.x
