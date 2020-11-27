@@ -1,7 +1,6 @@
 from location import Location
 import random
 
-
 class Party:
 
   def __init__(self, simulation, name, colour, strategy=""):

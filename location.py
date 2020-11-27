@@ -1,7 +1,6 @@
 import random
 import math
 
-
 class Location():
 
   def __init__(self):
