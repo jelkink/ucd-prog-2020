@@ -14,11 +14,13 @@ class Simulation:
 
   def generate_parties(self, n):
     for i in range(n):
-      self.parties.append(Party(self, "P" + format(i, 'd') , "colour" + format(i, 'd')))
+      self.parties.append(Party(self, "P" + format(i, 'd'), "colour" + format(i, 'd')))
+      self.log.write("Created party: P" + format(i, 'd'))
     
   def generate_voters(self, n):
     for i in range(n):
       self.voters.append(Voter(self))
+    self.log.write("Created {} voters".format(n, "d"))
 
   def get_parties(self):
     return self.parties
@@ -30,6 +32,8 @@ class Simulation:
     self.tracker = tracker
 
   def run(self, number_of_steps):
+
+    self.log.write("Starting simulation for {} loops".format(number_of_steps, "d"))
     for i in range(number_of_steps):
       
       print("\nStep {}:".format(i))
@@ -45,3 +49,4 @@ class Simulation:
         party.update_location()
 
       self.tracker.save_current_state()
+    self.log.write("Finishing simulation")
