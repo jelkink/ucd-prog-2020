@@ -1,6 +1,7 @@
 from party import Party
 from voter import Voter
 from tracker import Tracker
+from log import Log
 
 #create a simulation class, which creates parties & voters and runs the simulation
 #voters,parties,numbers of simulations
@@ -9,6 +10,7 @@ class Simulation:
   def __init__(self):
     self.voters = []
     self.parties = []
+    self.log = Log("simulation.log")
 
   def generate_parties(self, n):
     for i in range(n):
