@@ -11,11 +11,14 @@ class Simulation:
     self.voters = []
     self.parties = []
     self.log = Log("simulation.log")
+    self.tracker = Tracker(self)
 
   def generate_parties(self, n):
     for i in range(n):
-      self.parties.append(Party(self, "P" + format(i, 'd'), "colour" + format(i, 'd')))
-      self.log.write("Created party: P" + format(i, 'd'))
+      name = "P" + format(i, 'd')
+      self.parties.append(Party(self, name, "colour" + format(i, 'd')))
+      self.log.write("Created party: " + name)
+      self.tracker.add_party(name)
     
   def generate_voters(self, n):
     for i in range(n):
