@@ -2,6 +2,7 @@ from party import Party
 from voter import Voter
 from tracker import Tracker
 from log import Log
+from datetime import datetime
 
 #create a simulation class, which creates parties & voters and runs the simulation
 #voters,parties,numbers of simulations
@@ -53,3 +54,8 @@ class Simulation:
 
       self.tracker.save_current_state()
     self.log.write("Finishing simulation")
+
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    filename = timestamp + "_party_movement.csv"
+    self.log.write("Writing CSV file: " + filename)
+    self.tracker.export_to_csv(filename)
