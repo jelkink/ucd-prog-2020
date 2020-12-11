@@ -1,6 +1,7 @@
 from party import Party
 from voter import Voter
 from tracker import Tracker
+from display import Display
 from log import Log
 from datetime import datetime
 
@@ -13,11 +14,12 @@ class Simulation:
     self.parties = []
     self.log = Log("simulation.log")
     self.tracker = Tracker(self)
+    self.display = Display(self)
 
   def generate_parties(self, n):
     for i in range(n):
       name = "P" + format(i, 'd')
-      self.parties.append(Party(self, name, "colour" + format(i, 'd')))
+      self.parties.append(Party(self, name, i))
       self.log.write("Created party: " + name)
       self.tracker.add_party(name)
     
@@ -52,7 +54,10 @@ class Simulation:
         print("Party {} with the {} strategy has {} votes.".format(party.name, party.strategy, party.count_voters()))
         party.update_location()
 
+      self.display.update_plot()
+
       self.tracker.save_current_state()
+
     self.log.write("Finishing simulation")
 
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")

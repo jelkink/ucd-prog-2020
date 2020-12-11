@@ -5,15 +5,15 @@ class Location():
 
   def __init__(self):
     self.random_location()
-    self.step_size = 0.1
+    self.step_size = 0.01
 
   def random_location(self):
     self.x = random.random()
     self.y = random.random()
 
   def random_move(self):
-    self.x += self.step_size * (random.random() - 0.5)
-    self.y += self.step_size * (random.random() - 0.5)
+    self.set_x(self.x + self.step_size * (random.random() - 0.5))
+    self.set_y(self.y + self.step_size * (random.random() - 0.5))
 
   def distance(self, other):
     return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)

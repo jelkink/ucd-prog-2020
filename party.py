@@ -32,7 +32,7 @@ class Party:
       self.strategy = "aggregator"
     elif a == 5:
       self.strategy = "random"
-
+    
   def add_voter(self, voter):
     return self.voters.append(voter)
 

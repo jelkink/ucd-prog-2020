@@ -22,7 +22,7 @@ class Tracker:
   # create Excel file with all data
   def export_to_csv(self, filename):
 
-    fieldnames = ['time', 'party', 'votes', 'x', 'y']
+    fieldnames = ['time', 'party', 'strategy', 'votes', 'x', 'y']
 
     with open(filename, "w") as csv_file:
       writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -30,4 +30,4 @@ class Tracker:
 
       for party in self.simulation.get_parties():
         for t in range(len(self.votes[party.get_name()])):
-          writer.writerow({'time': t, 'party': party.get_name(), 'votes': self.votes[party.get_name()][t], 'x': self.x[party.get_name()][t], 'y': self.y[party.get_name()][t]})
+          writer.writerow({'time': t, 'party': party.get_name(), 'strategy': party.get_strategy(), 'votes': self.votes[party.get_name()][t], 'x': self.x[party.get_name()][t], 'y': self.y[party.get_name()][t]})
